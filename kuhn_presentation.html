@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuhn's Philosophy of Science: Five Core Themes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .presentation-container {
+            max-width: 1200px;
+            width: 90%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .slide {
+            display: none;
+            padding: 60px;
+            min-height: 600px;
+            position: relative;
+            animation: slideIn 0.5s ease-in-out;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .slide-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .slide h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .slide h2 {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        .slide h3 {
+            font-size: 1.5em;
+            color: #34495e;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+        
+        .bullet-point {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid #667eea;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .theme-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-right: 20px;
+            vertical-align: top;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .slide-counter {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .title-slide {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .title-slide h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            font-size: 1.5em;
+            color: #7f8c8d;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        
+        .author {
+            font-size: 1.2em;
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .diagram-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            flex: 1;
+            margin: 10px;
+            text-align: center;
+            min-width: 200px;
+        }
+        
+        .arrow {
+            font-size: 2em;
+            color: #667eea;
+            margin: 0 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px 20px;
+                min-height: 500px;
+            }
+            
+            .slide h1 {
+                font-size: 2em;
+            }
+            
+            .slide h2 {
+                font-size: 1.5em;
+            }
+            
+            .navigation {
+                bottom: 20px;
+            }
+            
+            .nav-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slide-counter" id="slideCounter">1 / 8</div>
+        
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <h1>Kuhn's Philosophy of Science</h1>
+            <div class="subtitle">Five Core Themes</div>
+            <div class="author">Understanding Scientific Revolutions and Paradigm Shifts</div>
+        </div>
+        
+        <!-- Slide 2: Overview -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Overview of Kuhn's Revolutionary Approach</h2>
+            </div>
+            <div class="content">
+                <p>Thomas Kuhn transformed our understanding of how science actually works, moving beyond traditional logical approaches to emphasize:</p>
+                <div class="bullet-point">
+                    <strong>Social Structures:</strong> How scientific communities operate and make decisions
+                </div>
+                <div class="bullet-point">
+                    <strong>Historical Analysis:</strong> What actually happened in major scientific changes
+                </div>
+                <div class="bullet-point">
+                    <strong>Mechanisms of Change:</strong> How science evolves through paradigm shifts
+                </div>
+                <div class="bullet-point">
+                    <strong>Non-linear Progress:</strong> Science doesn't simply accumulate truth over time
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 3: Theme 1 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2><span class="theme-number">1</span>Scientific Revolutions and Paradigm Changes</h2>
+            </div>
+            <div class="content">
+                <h3>Fundamental Discontinuities in Science</h3>
+                <div class="bullet-point">
+                    <strong>Paradigm Breakdown:</strong> Old conceptual frameworks collapse when they can no longer solve emerging problems effectively
+                </div>
+                <div class="bullet-point">
+                    <strong>Revolutionary Rebuilding:</strong> New frameworks emerge that create entirely different ways of understanding scientific problems
+                </div>
+                <div class="bullet-point">
+                    <strong>Essential Function:</strong> Revolutions are not anomalies but essential components of scientific progress, working alongside normal science
+                </div>
+                <div class="diagram">
+                    <div class="diagram-box">Old Paradigm</div>
+                    <div class="arrow">→</div>
+                    <div class="diagram-box">Crisis</div>
+                    <div class="arrow">→</div>
+                    <div class="diagram-box">New Paradigm</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 4: Theme 2 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2><span class="theme-number">2</span>Normal Science vs. Revolutionary Science</h2>
+            </div>
+            <div class="content">
+                <h3>Two Distinct Modes of Scientific Activity</h3>
+                <div class="bullet-point">
+                    <strong>Normal Science:</strong> Operates within established paradigms with orderly, disciplined processes where progress is evident and quality work can be distinguished
+                </div>
+                <div class="bullet-point">
+                    <strong>Revolutionary Science:</strong> Challenges fundamental assumptions, breaks down orderly assessment, and requires "gestalt switches" and leaps of faith
+                </div>
+                <div class="bullet-point">
+                    <strong>Sequential Interaction:</strong> These modes work in sequence within scientific fields, with science's unique power arising from their dynamic interaction
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 5: Theme 3 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2><span class="theme-number">3</span>Incommensurability Between Paradigms</h2>
+            </div>
+            <div class="content">
+                <h3>The Challenge of Paradigm Comparison</h3>
+                <div class="bullet-point">
+                    <strong>No Common Standards:</strong> Different paradigms cannot be compared using universal measures, creating fundamental communication difficulties
+                </div>
+                <div class="bullet-point">
+                    <strong>Different Criteria:</strong> Each paradigm brings its own standards for evidence, argument, and what constitutes legitimate scientific work
+                </div>
+                <div class="bullet-point">
+                    <strong>Subjective Superiority:</strong> While paradigms can be recognized as rivals, comparisons are only compelling to those already within the paradigm making the claim
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 6: Theme 4 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2><span class="theme-number">4</span>Scientific Progress and Relativism</h2>
+            </div>
+            <div class="content">
+                <h3>The Non-Cumulative Nature of Scientific Change</h3>
+                <div class="bullet-point">
+                    <strong>Gains and Losses:</strong> Science doesn't steadily accumulate truth but rather gains and loses different elements with each revolution
+                </div>
+                <div class="bullet-point">
+                    <strong>Relativism Accusations:</strong> Kuhn's views led to charges of relativism, though he maintained science's unique efficiency and problem-solving power
+                </div>
+                <div class="bullet-point">
+                    <strong>Contested Superiority:</strong> Whether later paradigms are truly superior to earlier ones remains contentious, with Kuhn offering multiple explanations
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 7: Theme 5 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2><span class="theme-number">5</span>Crisis and the Mechanism of Scientific Change</h2>
+            </div>
+            <div class="content">
+                <h3>How Scientific Revolutions Actually Happen</h3>
+                <div class="bullet-point">
+                    <strong>Crisis as Catalyst:</strong> Crises typically precede revolutions by loosening established paradigms and making scientists receptive to alternatives
+                </div>
+                <div class="bullet-point">
+                    <strong>Problem-Solving Power:</strong> New paradigms that can solve crisis-inducing problems serve as the spark for revolutionary change
+                </div>
+                <div class="bullet-point">
+                    <strong>Universal Limitations:</strong> Historical evidence suggests not all major scientific changes require preceding crises, making this mechanism less universal than initially claimed
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 8: Conclusion -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Conclusion: Kuhn's Lasting Impact</h2>
+            </div>
+            <div class="content">
+                <h3>Revolutionary Understanding of Science</h3>
+                <div class="bullet-point">
+                    <strong>Beyond Logic:</strong> Moved understanding of science beyond pure logical approaches to include social, historical, and psychological factors
+                </div>
+                <div class="bullet-point">
+                    <strong>Community Focus:</strong> Emphasized the role of scientific communities in determining what counts as legitimate science
+                </div>
+                <div class="bullet-point">
+                    <strong>Historical Perspective:</strong> Showed the importance of studying actual scientific practice rather than idealized versions
+                </div>
+                <div class="bullet-point">
+                    <strong>Ongoing Influence:</strong> These themes continue to shape philosophy of science, science studies, and our understanding of knowledge production
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">Previous</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            if (n >= totalSlides) currentSlide = 0;
+            if (n < 0) currentSlide = totalSlides - 1;
+            
+            slides[currentSlide].classList.add('active');
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+            
+            // Update slide counter
+            document.getElementById('slideCounter').textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+        
+        function changeSlide(direction) {
+            currentSlide += direction;
+            showSlide(currentSlide);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+        
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>

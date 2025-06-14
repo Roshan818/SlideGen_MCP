@@ -1,7 +1,3 @@
-Here’s a polished and professional `README.md` for your MCP tool setup:
-
----
-
 # Automated MCP SlideGen Tool
 
 This project consists of three MCP (Model Context Protocol) servers integrated with the Claude Desktop app to power context-aware GenAI workflows. Each server specializes in a unique task:
@@ -120,6 +116,9 @@ Once configured and running, you should see your tools listed under the **Tools*
 ---
 
 ## Project Status
+- You can find the video of working prototype [here](https://drive.google.com/file/d/1gxlOti9rv2PiAAQVvrZJT9qw81RM848e/view?usp=sharing).
+- PPT generated during test can be found [here](kuhn_presentation.html).
+
 
 | Component       | Status      |
 | --------------- | ----------- |
@@ -131,7 +130,7 @@ Once configured and running, you should see your tools listed under the **Tools*
 
 ---
 
-## 🙌 Credits
+## Credits
 
 Built with ❤️ by Roshan Kumar.
 Powered by [Model Context Protocol](https://github.com/modelcontextprotocol).
