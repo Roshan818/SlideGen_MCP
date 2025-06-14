@@ -1,0 +1,15 @@
+[project]
+name = "pdf-analyzer"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.9.4",
+    "nltk>=3.9.1",
+    "numpy>=2.3.0",
+    "pymupdf>=1.26.1",
+    "pypdf2>=3.0.1",
+    "scikit-learn>=1.7.0",
+]

@@ -1,0 +1,28 @@
+# Environment variables
+.env
+.env.*
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# macOS system files
+.DS_Store
+
+# Windows thumbnail db
+Thumbs.db
+
+# uv package cache (usually in .venv-equivalent)
+.uv/
+.uvcache/
+.uv-env/
+
+# VSCode settings (optional)
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak

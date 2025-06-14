@@ -1,0 +1,18 @@
+[project]
+name = "ppt-generator"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fitz>=0.0.1.dev2",
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.9.4",
+    "numpy>=2.3.0",
+    "pillow>=11.2.1",
+    "pymupdf>=1.26.1",
+    "pypdf2>=3.0.1",
+    "python-dotenv>=1.1.0",
+    "python-pptx>=1.0.2",
+    "scikit-learn>=1.7.0",
+]
